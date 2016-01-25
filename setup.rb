@@ -5,6 +5,7 @@ puts "merge negatives"
 
 File.open('positives.txt','r').read.each_line{|line|
   line = line.chomp
+  line = line.split("/").last
   system 'opencv_createsamples -img positive_images/' + line + '  -num 10 -bg negatives.txt -vec samples/' + line + '.vec -maxxangle 0.16 -maxyangle 0.16 -maxzangle 0.02 -w 86 -h 58 -bgcolor 0'
 }
 puts "create vecs"
